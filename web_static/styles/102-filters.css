@@ -113,3 +113,17 @@ div.amenities ul {
 	font-size: 15px;
 	margin: 9px;
 }
+
+@media only screen and (max-width: 1000px) {
+	.filters {
+		width; 95%;
+		margin: 0 auto;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	.filters {
+		display; grid;
+		height: 210px;
+	}
+}

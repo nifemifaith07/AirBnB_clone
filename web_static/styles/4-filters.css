@@ -1,0 +1,31 @@
+/*
+ * == filters style ==
+ */
+ 
+ /* filters */
+.filters {
+	background-color: #fff;
+	height: 70px;
+	width: 100% ;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	display: flex;
+	justify-content: right;
+ }
+ 
+ /* button */
+.filters button {
+	font-size: 18px;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	height: 48px;
+	width: 20%;
+	border-radius: 4px;
+	margin: auto 30px;
+	border: 0;
+}
+
+/* hovering */
+.filters button:hover {
+	opacity: 90%;
+}

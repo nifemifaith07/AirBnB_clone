@@ -1,0 +1,36 @@
+/*
+ * === Places class style ===
+ */
+
+/* Places style */
+.places {
+	text-align: center;
+}
+.places article {
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	border: 1px solid #ff5a5f;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+.places h2,
+.Places h3,
+.places h4 {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.places  h1 {
+	font-size: 30px;
+	text-align: left;
+	padding: 5px 0px 5px 20px;
+	font-weight: bold;
+}
+
+.places article h2 {
+	font-size: 30px;
+	font-weight: bold;
+}

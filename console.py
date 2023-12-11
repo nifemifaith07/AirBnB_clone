@@ -3,8 +3,8 @@
 """
 
 import cmd
-import re #regex
-from shlex import split #for parsing strings
+import re  # regex
+from shlex import split  # for parsing strings
 
 
 class HBNBCommand(cmd.Cmd):

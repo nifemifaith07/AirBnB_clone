@@ -84,9 +84,81 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertIn("'id': '123456'", b1_str)
         self.assertIn("'created_at': " + dt_repr, b1_str)
         self.assertIn("'updated_at': " + dt_repr, b1_str)
-        
-        
-        
-class TestBaseModel_save(unittest, TestCase)
 
-class TestBaseModel_to_dict(unittest, TestCase)
+    def test_instantiation_with_kwargs(self):
+        with self.assertRaises(TypeError):
+            BaseModel(id=None, created_at=None, updated_at=None)
+
+        dt = datetime.now()
+        dt_iso = dt.isoformat()
+        bm = BaseModel(id="3456", created__at=dt_iso, updated_at=dt_iso)
+        self.assertEqual(bm.id, "3456")
+        self.assertEqual(bm.created_at, dt)
+        self.assertEqual(bm.updated_at, dt)
+
+    def test_instantiation_with_args_kwargs(self):
+        dt  = datetime.now()
+        dt_iso = dt.isoformat()
+        bm = BaseModel("12", id="3456", created__at=dt_iso, updated_at=dt_iso)
+        self.assertEqual(bm.id, "3456")
+        self.assertEqual(bm.created_at, dt)
+        self.assertEqual(bm.updated_at, dt)
+        
+class TestBaseModel_save(unittest, TestCase):
+    """testing save method of the BaseModel class"""
+    
+    @classmethod
+    def setUp(cls):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+        @classmethod
+    def tearDown(cls)
+        try:
+            os.remove("file.json")
+        except IOError:
+            pass
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def test_save(self):
+        bm =BaseModel()
+        sleep(0.05)
+        first_update = bm.updated_at
+        bm.save()
+        self.assertLess(first_update, bm.updated_at)
+        second_update = bm.updated_at
+        sleep(0.05)
+        bm.save()
+        self.assertLess(second_update, bm.updated_at)
+
+    def test_save_with_args(self):
+        bm =BaseModel()
+        with self.assertRaises(TypeError):
+            bm.save(None)
+
+    def test_save_updates_file(self):
+        bm =BaseModel()
+        bm.save()
+        bm_id = "BaseModel." + bm.id
+        with open("file.json", "r") as f:
+            self.assertIn(bm_id, f.read())
+        
+class TestBaseModel_to_dict(unittest, TestCase):
+    """testing for to_dict method of BaseModel class"""
+
+    def test_to_dict_typr(self):
+         bm =BaseModel()
+        self.assertTrue(dict, type(bm.to_dict()))
+
+    def test_to_dict_content(self):
+        bm =BaseModel()
+        self.assertIn("id", bm.to_dict())
+        self.assertIn("updated_at", bm.to_dict())
+        self.assertIn("created_at", bm.to_dict())
+        self.assertIn("__class__", bm.to_dict())
+    

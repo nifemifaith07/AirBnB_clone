@@ -19,7 +19,8 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = self.updated_at = datetime.now()
         if not kwargs:
-            storage.new(self)
+            """storage.new(self)"""
+            pass
         else:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -34,7 +35,7 @@ class BaseModel:
     def save(self):
         """updates the 'updated_at' attribute with the current datetime"""
         self.updated_at = datetime.now()
-        storage.save()
+        """storage.save()"""
 
     def to_dict(self):
         """returns a dict containing all keys/values of __dict__ of the instance

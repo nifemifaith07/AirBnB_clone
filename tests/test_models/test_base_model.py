@@ -152,7 +152,7 @@ class TestBaseModel_to_dict(unittest, TestCase):
     """testing for to_dict method of BaseModel class"""
 
     def test_to_dict_typr(self):
-         bm =BaseModel()
+        bm =BaseModel()
         self.assertTrue(dict, type(bm.to_dict()))
 
     def test_to_dict_content(self):

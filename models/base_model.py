@@ -16,17 +16,18 @@ class BaseModel:
             updated_at (optional, datetime): the datetime when an instance is modified
         """
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid4())
-        self.created_at = self.updated_at = datetime.now()
+        
         if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = self.updated_at = datetime.now()
             """storage.new(self)"""
-            pass
         else:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(kwargs[key], t_format)
                 if key != "__-class__":
                     setattr(self, key, value)
+
     def __str__(self):
         """return the string representation of BaseModel object"""
         c_name = self.__class__.__name__

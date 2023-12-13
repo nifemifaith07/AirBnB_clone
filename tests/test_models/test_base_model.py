@@ -115,7 +115,7 @@ class TestBaseModel_save(unittest, TestCase):
             pass
 
     @classmethod
-    def tearDown(cls)
+    def tearDown(cls):
         try:
             os.remove("file.json")
         except IOError:

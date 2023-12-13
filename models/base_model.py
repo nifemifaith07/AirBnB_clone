@@ -2,7 +2,7 @@
 """defines the BaseModel of the HBnB project"""
 from models import storage
 from uuid import uuid4
-frome datetime import datetime
+from datetime import datetime
 
 
 class BaseModel:

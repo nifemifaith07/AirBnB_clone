@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""defines the BaseModel of the HBnB project"""
+"""defines the BaseModel of the HBnB project
 from models import storage
+"""
 from uuid import uuid4
 from datetime import datetime
 

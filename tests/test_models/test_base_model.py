@@ -8,6 +8,7 @@ Unittest classes:
     TestBaseModel_to_dict
 """
 import os
+import inspect
 import models
 import unittest
 from datetime import datetime
@@ -91,7 +92,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
 
         dt = datetime.now()
         dt_iso = dt.isoformat()
-        bm = BaseModel(id="3456", created__at=dt_iso, updated_at=dt_iso)
+        bm = BaseModel(id="3456", created__at=dt, updated_at=dt)
         self.assertEqual(bm.id, "3456")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)
@@ -99,7 +100,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
     def test_instantiation_with_args_kwargs(self):
         dt  = datetime.now()
         dt_iso = dt.isoformat()
-        bm = BaseModel("12", id="3456", created__at=dt_iso, updated_at=dt_iso)
+        bm = BaseModel("12", id="3456", created__at=dt, updated_at=dt)
         self.assertEqual(bm.id, "3456")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)

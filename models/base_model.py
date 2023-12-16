@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """defines the BaseModel of the HBnB project"""
-from models import storage
 from uuid import uuid4
 from datetime import datetime
 
@@ -15,7 +14,7 @@ class BaseModel:
             updated_at (optional, datetime): the datetime when an instance is modified
         """
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
-        
+        from models import storage
         if not kwargs:
             self.id = str(uuid4())
             self.created_at = self.updated_at = datetime.now()

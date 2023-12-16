@@ -2,7 +2,7 @@
 """defines the BaseModel of the HBnB project"""
 from uuid import uuid4
 from datetime import datetime
-from models import storage
+import models
 
 class BaseModel:
     """defines all common attributes/methods for other classes"""
@@ -18,7 +18,7 @@ class BaseModel:
         if not kwargs:
             self.id = str(uuid4())
             self.created_at = self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -34,7 +34,7 @@ class BaseModel:
     def save(self):
         """updates the 'updated_at' attribute with the current datetime"""
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """returns a dict containing all keys/values of __dict__ of the instance

@@ -2,11 +2,11 @@
 """defines the BaseModel of the HBnB project"""
 from uuid import uuid4
 from datetime import datetime
-
+from models import storage
 
 class BaseModel:
     """defines all common attributes/methods for other classes"""
-    from models import storage
+    
     def __init__(self, *args, **kwargs):
         """initializes the BaseModel class
         Attributes:

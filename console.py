@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                 objs = storage.all()
                 for _, val in objs.items():
                     object_name = val.__class__.__name__
-                    object_id = value.id
+                    object_id = val.id
                     if object_name == name[0] and object_id == name[1].strip('"'):
                         print(val)
                         return

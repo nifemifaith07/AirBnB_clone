@@ -18,13 +18,6 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     classes =  {"BaseModel": BaseModel}
-        """User": User,
-        "City": City,
-        "Place": Place,
-        "Amenity": Amenity,
-        "State": State,
-        "Review": Review
-        """
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 

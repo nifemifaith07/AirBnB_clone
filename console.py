@@ -17,7 +17,15 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    classes =  ["BaseModel"]
+    classes = [
+        "BaseModel",
+        "User",
+        "Amenity",
+        "Place",
+        "City",
+        "State",
+        "Review",
+    ]
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
@@ -37,8 +45,13 @@ class HBNBCommand(cmd.Cmd):
         arg (str): the string containing the arguments passed to a command
         Return: Error message if args is None or invalid class, else the argument
         """
-        pass
-
+        if not args
+            print("**class name missing**")
+        elif args not in self.classes:
+            print("**class doesn't exist**")
+        else:
+             return args
+ 
     def emptyline(self):
         """do nothing when an empty line is passed"""
         pass
@@ -50,13 +63,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, cls_name):
         """Creates a new instance of BaseModel, saves it and prints the id"""
-        if not cls_name:
-            print("**class name missing**")
-        elif cls_name not in self.classes:
-            print("**class doesn't exist**")
-        else:
-            print(eval(cls_name)().id)
+       name = check_args(cls_name)
+       if name:
+            print(eval(name)().id)
             storage.save
-            
+
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

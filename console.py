@@ -17,7 +17,7 @@ def check_args(args):
     """
     if not args:
         print("**class name missing**")
-    elif args not in self.classes:
+    elif args not in classes:
         print("**class doesn't exist**")
     else:
          return args

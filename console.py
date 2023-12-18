@@ -77,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string rep of an instance based on the class name and id"""
         name = check_args(argv)
         if name:
-            if len(name) == 2:
+            if len(name) != 2:
                 print("** instance id missing **")
             else:
                 objs = storage.all()

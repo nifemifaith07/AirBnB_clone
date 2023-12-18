@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Defines the HBnB console, that manages the AirBnB objects.
+"""
+Defines the HBnB console, that manages the AirBnB objects.
 """
 
 import cmd
@@ -71,5 +72,22 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("Usage: create classname")
 
+    def do_show(self, argv):
+        """Prints the string rep of an instance based on the class name and id"""
+        name = check_args(argv)
+        if len(name) == 2:
+            print("** instance id missing **")
+        else:
+            objs = storage.all()
+            for _, val in objs.items():
+                object_name = val.__class__.__name__
+                object_id = value.id
+                if object_name == name[0] and object_id == name[1].strip('"'):
+                    print(val)
+                    return
+            print("** no instance found **")
+            
+
+    def do_all(self, argv):
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

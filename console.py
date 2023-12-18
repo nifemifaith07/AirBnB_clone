@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    classes =  {"BaseModel": BaseModel}
+    classes =  ["BaseModel"]
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 

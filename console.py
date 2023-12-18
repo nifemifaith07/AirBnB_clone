@@ -9,7 +9,7 @@ import models
 from models.base_model import BaseModel
 from models import storage
 
-def check_args(self, args):
+def check_args(args):
     """check if argument is valid
     Args:
     arg (str): the string containing the arguments passed to a command

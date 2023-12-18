@@ -5,6 +5,8 @@
 import cmd
 import re  # regex
 from shlex import split  # for parsing strings
+import models
+from models.base_model import BaseModel
 from models import storage
 
 
@@ -17,12 +19,12 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     classes =  {
         "BaseModel": BaseModel,
-        "User": User,
+        """"User": User,
         "City": City,
         "Place": Place,
         "Amenity": Amenity,
         "State": State,
-        "Review": Review,
+        "Review": Review,"""
     }
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]

@@ -9,7 +9,19 @@ import models
 from models.base_model import BaseModel
 from models import storage
 
-
+def check_args(self, args):
+    """check if argument is valid
+    Args:
+    arg (str): the string containing the arguments passed to a command
+    Return: Error message if args is None or invalid class, else the argument
+    """
+    if not args:
+        print("**class name missing**")
+    elif args not in self.classes:
+        print("**class doesn't exist**")
+    else:
+         return args
+ 
 class HBNBCommand(cmd.Cmd):
     """ Implements the hbnb command interpreter
     Attributes:
@@ -38,19 +50,6 @@ class HBNBCommand(cmd.Cmd):
             if clss[0] in self.classes and comand[0] in self.cmd_list:
                 args = comand[0] + " " + cls[0] + " " + argl[0]
         return args
-
-    def check_args(self, args):
-        """check if argument is valid
-        Args:
-        arg (str): the string containing the arguments passed to a command
-        Return: Error message if args is None or invalid class, else the argument
-        """
-        if not args:
-            print("**class name missing**")
-        elif args not in self.classes:
-            print("**class doesn't exist**")
-        else:
-             return args
  
     def emptyline(self):
         """do nothing when an empty line is passed"""

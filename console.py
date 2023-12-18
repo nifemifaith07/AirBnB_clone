@@ -15,15 +15,15 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    classes = [
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    ]
+    classes =  {
+        "BaseModel": BaseModel,
+        "User": User,
+        "City": City,
+        "Place": Place,
+        "Amenity": Amenity,
+        "State": State,
+        "Review": Review,
+    }
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
         elif cls_name not in self.classes:
             print("**class doesn't exist**")
         else:
-            print(cls_name().id)
+            print(eval(classes[cls_name])().id)
             storage.save
             
 if __name__ == "__main__":

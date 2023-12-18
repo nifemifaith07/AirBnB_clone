@@ -15,14 +15,14 @@ def check_args(args):
     arg (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
-    
+    arg = args.split(" ")
     if not args:
         print("**class name missing**")
-    elif args not in classes:
-        print(args)
+    elif arg[0] not in classes:
+        print(arg)
         print("**class doesn't exist**")
     else:
-         return args
+         return arg
 classes = [
         "BaseModel",
         "User",
@@ -65,10 +65,11 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls_name):
         """Creates a new instance of BaseModel, saves it and prints the id"""
         name = check_args(cls_name)
-        if name:
+        if len(name) == 1:
             print(eval(name)().id)
             storage.save
-
+        else:
+            print("Usage: create classname")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

@@ -63,8 +63,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, cls_name):
         """Creates a new instance of BaseModel, saves it and prints the id"""
-       name = check_args(cls_name)
-       if name:
+        name = check_args(cls_name)
+        if name:
             print(eval(name)().id)
             storage.save
 

@@ -20,6 +20,7 @@ def check_args(args):
     if not arg:
         print("**class name missing**")
     elif arg[0] not in classes:
+        print(arg)
         print("**class doesn't exist**")
     else:
          return args

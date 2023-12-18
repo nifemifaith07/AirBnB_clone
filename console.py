@@ -15,9 +15,10 @@ def check_args(args):
     arg (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
-    if not args:
+    arg_list = list(args)
+    if len(arg_list) == 0:
         print("**class name missing**")
-    elif args not in classes:
+    elif arg_list[0] not in classes:
         print("**class doesn't exist**")
     else:
          return args

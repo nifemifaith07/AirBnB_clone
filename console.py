@@ -14,6 +14,34 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
+    classes = [
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
+    ]
+
+    cmd_list = ["create", "show", "update", "all", "destroy", "count"]
+
+    def precmd(self, args):
+        """Parse the user input"""
+        if "." in args and "(" in args and ")" in args:
+            clss = args.split(".")
+            cmmd = clss[1].split("(")
+            argl = cmmd[1].split(")")
+            if clss[0] in self.classes and comand[0] in self.cmd_list:
+                args = comand[0] + " " + cls[0] + " " + argl[0]
+        return args
+
+    def check_args(self, args):
+        """check if argument is valid
+        Args:
+        arg (str): the string containing the arguments passed to a command
+        Return: Error message if args is None or invalid class, else the argument
+        """
 
     def emptyline(self):
         """do nothing when an empty line is passed"""
@@ -24,6 +52,9 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
+    
+
 
 if __name__ == "__main__":
-    HBNBCommand().cmdloop()
+    HBNBCommand().cmd
+  loop()

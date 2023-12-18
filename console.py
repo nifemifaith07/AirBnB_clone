@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         elif cls_name not in self.classes:
             print("**class doesn't exist**")
         else:
-            print(eval(classes[cls_name])().id)
+            print(eval(self.classes[cls_name])().id)
             storage.save
             
 if __name__ == "__main__":

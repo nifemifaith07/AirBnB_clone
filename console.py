@@ -66,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it and prints the id"""
         name = check_args(cls_name)
         if len(name) == 1:
-            print(eval(name)().id)
+            print(eval(cls_name)().id)
             storage.save
         else:
             print("Usage: create classname")

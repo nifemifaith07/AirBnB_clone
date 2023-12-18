@@ -66,11 +66,12 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls_name):
         """Creates a new instance of BaseModel, saves it and prints the id"""
         name = check_args(cls_name)
-        if len(name) == 1:
-            print(eval(cls_name)().id)
-            storage.save
-        else:
-            print("Usage: create classname")
+        if name:
+            if len(name) == 1:
+                print(eval(cls_name)().id)
+                storage.save
+            else:
+                print("Usage: create classname")
 
     def do_show(self, argv):
         """Prints the string rep of an instance based on the class name and id"""

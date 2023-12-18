@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         arg (str): the string containing the arguments passed to a command
         Return: Error message if args is None or invalid class, else the argument
         """
-        if not args
+        if not args:
             print("**class name missing**")
         elif args not in self.classes:
             print("**class doesn't exist**")

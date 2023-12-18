@@ -18,7 +18,7 @@ def check_args(args):
     arg_list = list(args)
     if len(arg_list) == 0:
         print("**class name missing**")
-    elif arg_list[0] not in classes:
+    elif arg_list[1] not in classes:
         print("**class doesn't exist**")
     else:
          return args

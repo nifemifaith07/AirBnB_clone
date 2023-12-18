@@ -5,6 +5,7 @@
 import cmd
 import re  # regex
 from shlex import split  # for parsing strings
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -42,6 +43,7 @@ class HBNBCommand(cmd.Cmd):
         arg (str): the string containing the arguments passed to a command
         Return: Error message if args is None or invalid class, else the argument
         """
+        pass
 
     def emptyline(self):
         """do nothing when an empty line is passed"""
@@ -52,9 +54,16 @@ class HBNBCommand(cmd.Cmd):
         print("")
         return True
 
-    
-
-
+    def do_create(self, cls_name):
+        """Creates a new instance of BaseModel, saves it and prints the id"""
+        if not cls_name:
+            print("**class name missing**")
+        elif cls_name not in self.classes:
+            print("**class doesn't exist**")
+        else:
+            print(cls_name().id)
+            storage.save
+            
 if __name__ == "__main__":
     HBNBCommand().cmd
   loop()

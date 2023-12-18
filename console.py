@@ -21,15 +21,7 @@ def check_args(args):
         print("**class doesn't exist**")
     else:
          return args
- 
-class HBNBCommand(cmd.Cmd):
-    """ Implements the hbnb command interpreter
-    Attributes:
-        prompt: The command prompt
-    """
-
-    prompt = "(hbnb) "
-    classes = [
+classes = [
         "BaseModel",
         "User",
         "Amenity",
@@ -37,8 +29,16 @@ class HBNBCommand(cmd.Cmd):
         "City",
         "State",
         "Review",
-    ]
+]
 
+class HBNBCommand(cmd.Cmd):
+    """ Implements the hbnb command interpreter
+    Attributes:
+        prompt: The command prompt
+    """
+
+    prompt = "(hbnb) "
+  
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
     def precmd(self, args):
@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             clss = args.split(".")
             cmmd = clss[1].split("(")
             argl = cmmd[1].split(")")
-            if clss[0] in self.classes and comand[0] in self.cmd_list:
+            if clss[0] in classes and comand[0] in self.cmd_list:
                 args = comand[0] + " " + cls[0] + " " + argl[0]
         return args
  

@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         if name:
             if len(name) == 1:
                 print(eval(cls_name)().id)
-                storage.save
+                storage.save()
             else:
                 print("Usage: create <classname>")
 
@@ -128,6 +128,6 @@ class HBNBCommand(cmd.Cmd):
                     if obj_name == arg[0] and obj_id == arg[1].strip('"'):
                         del val
                         del storage._FileStorage__objects[key]
-                        storage.save
+                        storage.save()
                         return
                 print("** no instance found **")

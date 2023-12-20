@@ -17,11 +17,13 @@ def check_args(args):
     Return: Error message if args is None or invalid class, else the argument
     """
     arg = args.split(" ")
+    late = split(args)
     if len(args) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
         print(args)
         print(arg)
+        print(late)
         print("** class doesn't exist **")
     else:
          return arg
@@ -131,3 +133,17 @@ class HBNBCommand(cmd.Cmd):
                         storage.save()
                         return
                 print("** no instance found **")
+
+    def do_update(self, argv):
+        """
+        Updates an instance based on the class name and id by adding or updating attribute 
+        (save the change into the JSON file)
+        """
+        name = check_args(argv)
+        if name:
+            if len(name)  > 1:
+                print("** instance id missing **")
+                
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()

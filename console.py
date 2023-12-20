@@ -130,5 +130,4 @@ class HBNBCommand(cmd.Cmd):
                         del storage._FileStorage__objects[key]
                         storage.save
                         return
-
                 print("** no instance found **")

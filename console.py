@@ -24,11 +24,9 @@ def check_args(argv):
     if len(argv) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
-        print(argv)
-        print(arg)
         print(later)
         print(late)
-        print(argv[2])
+        print(later[2])
         print(arg[1].strip('"'))
         print("** class doesn't exist **")
     else:

@@ -10,24 +10,26 @@ import models
 from models.base_model import BaseModel
 from models import storage
 
-def check_args(args):
+def check_args(argv):
     """check if argument is valid
     Args:
     args (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
-    arg = args.split(" ")
+    arg = argv.split(" ")
     later = ""
-    for a in args.split(","):
+    for a in argv.split(","):
         later = later + a
     late = split(later)
-    if len(args) == 0:
+    if len(argv) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
-        print(args)
+        print(argv)
         print(arg)
         print(later)
         print(late)
+        print(argv[2])
+        print(arg[1].strip('"'))
         print("** class doesn't exist **")
     else:
          return arg
@@ -147,6 +149,17 @@ class HBNBCommand(cmd.Cmd):
         if name:
             if len(name)  > 1:
                 print("** instance id missing **")
+            else:
+                inst_id = "{}.{}".format(name[0], name[1].strip('"'))
+                if inst_id in storage.all():
+                    if len(name) == 2:
+                        print("** attribute name missing **")
+                    elif len(name) == 3:
+                        print("** value missing **")
+                    else:
+                        obj = storage.all()[inst_id]
+
+                print("** no instance found **")
                 
 
 if __name__ == "__main__":

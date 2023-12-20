@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines the file_storage class (an abstract storage engine)"""
 import json
-import os
 from models.base_model import BaseModel
 """from models.user import User
 from models.state import State
@@ -33,6 +32,7 @@ class FileStorage:
         """Serialize __objects to the JSON file __file_path."""
         fObj = FileStorage.__objects
         objdict = {obj: fObj[obj].to_dict() for obj in fObj.keys()}
+
         with open(FileStorage.__file_path, "w") as f:
             json.dump(objdict, f)
 
@@ -45,5 +45,5 @@ class FileStorage:
                     cls_name = o["__class__"]
                     del o["__class__"]
                     self.new(eval(cls_name)(**o))
-        except:
+        except FileNotFoundError:
             return

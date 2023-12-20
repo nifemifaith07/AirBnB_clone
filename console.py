@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
                 print(eval(cls_name)().id)
                 storage.save
             else:
-                print("Usage: create classname")
+                print("Usage: create <classname>")
 
     def do_show(self, argv):
         """Prints the string rep of an instance based on the class name and id"""
@@ -95,7 +95,6 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string rep of all instances based or not on the class name"""
         objs = storage.all()
         inst = []
-
         if not argv:
             for _, val in objs.items():
                 inst.append(val.__str__())
@@ -112,4 +111,24 @@ class HBNBCommand(cmd.Cmd):
                     inst.append(val.__str__())
         print(inst)
 
-        
+    def do_destroy(self, argv):
+        """
+        deletes an instance based on the classname and id
+        and save the change into the JSON file
+        """
+        arg = check_args(argv)
+        if arg:
+            if len(arg) != 2:
+                print("** instance id missing **")
+            else:
+                obj = storage.all()
+                for key, val in obj.items():
+                    obj_name = val.__class__.__name__
+                    obj_id = val.id
+                    if obj_name == arg[0] and obj_id == arg[1].strip('"'):
+                        del val
+                        del storage._FileStorage__objects[key]
+                        storage.save
+                        return
+
+                  print("** no instance found **")

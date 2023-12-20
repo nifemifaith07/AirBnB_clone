@@ -16,8 +16,8 @@ if not os.path.exists(file_path):
         file_path = FileStorage._FileStorage__file_path
     except:
         pass
-if os.path.exists(file_path):
-    os.remove(file_path)
+"""if os.path.exists(file_path):
+    os.remove(file_path)"""
 
 """
  Backup console file

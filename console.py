@@ -142,6 +142,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 inst_id = "{}.{}".format(name[0], name[1].strip('"'))
+                print(inst_id)
                 if inst_id in storage.all():
                     if len(name) == 2:
                         print("** attribute name missing **")
@@ -149,8 +150,11 @@ class HBNBCommand(cmd.Cmd):
                         print("** value missing **")
                     else:
                         obj_inst = storage.all()[inst_id]
+                        print(obj_inst)
                         if name[2] in type(obj_inst).__dict__:
                             n_type = type(obj_inst.__class__.__dict__[name[2]])
+                            print(name[2])
+                            print(name[3])
                             setattr(obj_inst, name[2], v_type(name[3]))
                         else:
                             setattr(obj_inst, name[2], name[3])

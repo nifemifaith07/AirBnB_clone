@@ -26,6 +26,7 @@ def check_args(args):
     elif arg[0] not in classes:
         print(args)
         print(arg)
+        print(later)
         print(late)
         print("** class doesn't exist **")
     else:

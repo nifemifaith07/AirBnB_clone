@@ -148,10 +148,16 @@ class HBNBCommand(cmd.Cmd):
                     elif len(name) == 3:
                         print("** value missing **")
                     else:
-                        obj = storage.all()[inst_id]
-
+                        obj_inst = storage.all()[inst_id]
+                        if name[2] in type(obj_inst).__dict__:
+                            n_type = type(obj_inst.__class__.__dict__[name[2]])
+                            setattr(obj_inst, name[2], v_type(name[3]))
+                        else:
+                            setattr(obj_inst, name[2], name[3])
+                        storage.save()
+                    return
                 print("** no instance found **")
-                
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

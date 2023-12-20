@@ -17,16 +17,9 @@ def check_args(argv):
     Return: Error message if args is None or invalid class, else the argument
     """
     arg = argv.split(" ")
-    later = ""
-    for a in argv.split(","):
-        later = later + a
-    late = split(later)
     if len(argv) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
-        print(later)
-        print(late)
-        print(later[2])
         print(arg[1].strip('"'))
         print("** class doesn't exist **")
     else:
@@ -145,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         """
         name = check_args(argv)
         if name:
-            if len(name)  > 1:
+            if len(name) < 2:
                 print("** instance id missing **")
             else:
                 inst_id = "{}.{}".format(name[0], name[1].strip('"'))

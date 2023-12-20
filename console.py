@@ -13,18 +13,16 @@ from models import storage
 def check_args(args):
     """check if argument is valid
     Args:
-    arg (str): the string containing the arguments passed to a command
+    args (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
     arg = args.split(" ")
     if len(args) == 0:
-        print("**class name missing**")
+        print("** class name missing **")
     elif arg[0] not in classes:
         print(args)
-        print(len(arg))
-        print(len(args))
         print(arg)
-        print("**class doesn't exist**")
+        print("** class doesn't exist **")
     else:
          return arg
 classes = [

@@ -14,6 +14,54 @@ from models.city import City
 from models.review import Review
 from models.place import Place"""
 
+class TestFileStorage(unittest.TestCase):
+    """tests for the FileStorage class
+    be advised:
+        rat ususally means an instance of an object"""
+
+    def setUp(self):
+        """set up"""
+        pass
+
+    def resetStorage(self):
+        """start fresh with FileStorage"""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
+    def tearDown(self):
+        """tear it down"""
+        self.resetStorage()
+        pass
+    """========================"""
+
+    def test_instantiation(self):
+        """make an instance of storage class"""
+        self.assertEqual(type(storage).__name__, "FileStorage")
+
+    def test_init_no_args(self):
+        """no args please"""
+        self.resetStorage()
+        with self.assertRaises(TypeError) as e:
+            FileStorage.__init__()
+        msg = "descriptor '__init__' of 'object' object needs an argument"
+        self.assertEqual(str(e.exception), msg)
+
+    def test_init_such_args(self):
+        """such args much wow"""
+        self.resetStorage()
+        with self.assertRaises(TypeError) as e:
+            rat = FileStorage(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+        msg = "object() takes no parameters"
+        self.assertEqual(str(e.exception), msg)
+
+    def test_class_attributes(self):
+        """classy attributes you got there"""
+        self.resetStorage()
+        self.assertTrue(hasattr(FileStorage, "_FileStorage__file_path"))
+        self.assertTrue(hasattr(FileStorage, "_FileStorage__objects"))
+        self.assertEqual(getattr(FileStorage, "_FileStorage__objects"), {})
+        
 
 class TestFileStorageInit(unittest.TestCase):
     """Contains test cases against the FileStorage initialization"""

@@ -20,7 +20,6 @@ def check_args(argv):
     if len(argv) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
-        print(arg[1].strip('"'))
         print("** class doesn't exist **")
     else:
          return arg
@@ -158,7 +157,7 @@ class HBNBCommand(cmd.Cmd):
                             """
                         storage.save()
                     return
-                    print("** no instance found **")
+                print("** no instance found **")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

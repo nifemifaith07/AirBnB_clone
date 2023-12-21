@@ -160,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
                             print(type(obj_inst).__dict__)
                             print(name[2])
                             print(type(name[2]))
-                            print(n_type)
+                            print(type(obj_inst.__class__.__dict__[name[2]]))
                             print(name[3])
                             setattr(obj_inst, name[2], name[3])
                         storage.save()

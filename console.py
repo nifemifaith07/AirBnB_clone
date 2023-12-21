@@ -155,7 +155,7 @@ class HBNBCommand(cmd.Cmd):
                             n_type = type(obj_inst.__class__.__dict__[name[2]])
                             print(name[2])
                             print(name[3])
-                            setattr(obj_inst, name[2], v_type(name[3]))
+                            setattr(obj_inst, name[2], n_type(name[3]))
                         else:
                             print(type(obj_inst).__dict__)
                             print(name[2])

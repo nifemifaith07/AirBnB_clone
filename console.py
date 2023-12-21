@@ -157,7 +157,10 @@ class HBNBCommand(cmd.Cmd):
                             print(name[3])
                             setattr(obj_inst, name[2], v_type(name[3]))
                         else:
+                            print(type(obj_inst).__dict__:)
                             print(name[2])
+                            print(type(name[2]))
+                            print(n_type)
                             print(name[3])
                             setattr(obj_inst, name[2], name[3])
                         storage.save()

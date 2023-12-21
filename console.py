@@ -151,9 +151,11 @@ class HBNBCommand(cmd.Cmd):
                         obj_name = val.__class__.__name__
                         obj_id = val.id
                         if obj_name == name[0] and obj_id == name[1].strip('"'):
-                           setattr(val, name[2], name[3])
-                            """else:
-                            setattr(obj_inst, name[2], name[3])"""
+                            setattr(val, name[2], name[3])
+                            """
+                            else:
+                            setattr(obj_inst, name[2], name[3])
+                            """
                         storage.save()
                     return
                     print("** no instance found **")

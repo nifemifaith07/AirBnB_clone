@@ -141,23 +141,22 @@ class HBNBCommand(cmd.Cmd):
             if len(name) < 2:
                 print("** instance id missing **")
             else:
-                obj = storage.all()
-                for key, val in obj.items():
-                    obj_name = val.__class__.__name__
-                    obj_id = val.id
-                    if obj_name == name[0] and obj_id == name[1].strip('"'):
-                        if len(name) == 2:
-                            print("** attribute name missing **")
-                        elif len(name) == 3:
-                            print("** value missing **")
-                        else:
-                            setattr(val, name[2], (name[3]))
-                        """else:
+                if len(name) == 2:
+                    print("** attribute name missing **")
+                elif len(name) == 3:
+                    print("** value missing **")
+                else:
+                    obj = storage.all()
+                    for key, val in obj.items():
+                        obj_name = val.__class__.__name__
+                        obj_id = val.id
+                        if obj_name == name[0] and obj_id == name[1].strip('"'):
+                           setattr(val, name[2], name[3])
+                            """else:
                             setattr(obj_inst, name[2], name[3])"""
                         storage.save()
                     return
-                print("** no instance found **")
-
+                    print("** no instance found **")
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

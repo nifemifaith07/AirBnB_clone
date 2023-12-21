@@ -16,23 +16,10 @@ def check_args(argv):
     args (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
-    late = ""
-    for a in argv.split(","):
-        late = late + a
-    later = split(late)
     arg = argv.split(" ")
     if len(argv) == 0:
         print("** class name missing **")
     elif arg[0] not in classes:
-        print(argv)
-        print(type(argv))
-        print(arg)
-        print(len(arg))
-        print(type(arg))
-        print(len(later))
-        print(later)
-        print(type(later))
-        
         print(arg[1].strip('"'))
         print("** class doesn't exist **")
     else:
@@ -154,28 +141,19 @@ class HBNBCommand(cmd.Cmd):
             if len(name) < 2:
                 print("** instance id missing **")
             else:
-                inst_id = "{}.{}".format(name[0], name[1].strip('"'))
-                print(inst_id)
-                if inst_id in storage.all():
-                    if len(name) == 2:
-                        print("** attribute name missing **")
-                    elif len(name) == 3:
-                        print("** value missing **")
-                    else:
-                        obj_inst = storage.all()[inst_id]
-                        print(obj_inst)
-                        if name[2] in type(obj_inst).__dict__:
-                            n_type = type(obj_inst.__class__.__dict__[name[2]])
-                            print(name[2])
-                            print(name[3])
-                            setattr(obj_inst, name[2], n_type(name[3]))
+                obj = storage.all()
+                for key, val in obj.items():
+                    obj_name = val.__class__.__name__
+                    obj_id = val.id
+                    if obj_name == name[0] and obj_id == name[1].strip('"'):
+                        if len(name) == 2:
+                            print("** attribute name missing **")
+                        elif len(name) == 3:
+                            print("** value missing **")
                         else:
-                            print(type(obj_inst).__dict__)
-                            print(name[2])
-                            print(type(name[2]))
-                            print(type(obj_inst.__class__.__dict__[name[2]]))
-                            print(name[3])
-                            setattr(obj_inst, name[2], name[3])
+                            setattr(val, name[2], (name[3]))
+                        """else:
+                            setattr(obj_inst, name[2], name[3])"""
                         storage.save()
                     return
                 print("** no instance found **")

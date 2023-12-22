@@ -8,6 +8,7 @@ import re  # regex
 from shlex import split  # for parsing strings
 import models
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 def check_args(argv):

@@ -161,5 +161,15 @@ class HBNBCommand(cmd.Cmd):
                             return
                     print("** no instance found **")
 
+    def do_count(self, class_name):
+        """Count the instance of a class name from file objects"""
+        count = 0
+        obj = storage.all()
+        for key, val in objs.items():
+            clss = key.split(".")
+            if clss[0] == class_name:
+                count = count + 1
+        print(count)
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

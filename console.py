@@ -55,8 +55,8 @@ class HBNBCommand(cmd.Cmd):
             clss = args.split(".")
             cmmd = clss[1].split("(")
             argl = cmmd[1].split(")")
-            if clss[0] in classes and comand[0] in self.cmd_list:
-                args = comand[0] + " " + cls[0] + " " + argl[0]
+            if clss[0] in classes and cmmd[0] in self.cmd_list:
+                args = cmmd[0] + " " + clss[0] + " " + argl[0]
         return args
  
     def emptyline(self):

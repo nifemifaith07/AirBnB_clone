@@ -165,7 +165,7 @@ class HBNBCommand(cmd.Cmd):
         """Count the instance of a class name from file objects"""
         count = 0
         obj = storage.all()
-        for key, val in objs.items():
+        for key, val in obj.items():
             clss = key.split(".")
             if clss[0] == class_name:
                 count = count + 1

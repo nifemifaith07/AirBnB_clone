@@ -22,6 +22,7 @@ def check_args(argv):
     args (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
+    print(argv)
     arg = argv.split(" ")
     if len(argv) == 0:
         print("** class name missing **")
@@ -142,6 +143,7 @@ class HBNBCommand(cmd.Cmd):
         (save the change into the JSON file)
         """
         name = check_args(argv)
+        print(name)
         if name:
             if len(name) < 2:
                 print("** instance id missing **")

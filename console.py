@@ -22,7 +22,6 @@ def check_args(argv):
     args (str): the string containing the arguments passed to a command
     Return: Error message if args is None or invalid class, else the argument
     """
-    print(argv)
     arg = argv.split(" ")
     if len(argv) == 0:
         print("** class name missing **")
@@ -54,14 +53,10 @@ class HBNBCommand(cmd.Cmd):
         """Parse the user input"""
         if "." in args and "(" in args and ")" in args:
             clss = args.split(".")
-            print(clss)
             cmmd = clss[1].split("(")
-            print(cmmd)
             argl = cmmd[1].split(")")
-            print(argl)
             if clss[0] in classes and cmmd[0] in self.cmd_list:
                 args = cmmd[0] + " " + clss[0] + " " + argl[0]
-                print(args)
         return args
  
     def emptyline(self):
@@ -147,7 +142,6 @@ class HBNBCommand(cmd.Cmd):
         (save the change into the JSON file)
         """
         name = check_args(argv)
-        print(name)
         if name:
             if len(name) < 2:
                 print("** instance id missing **")

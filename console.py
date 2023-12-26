@@ -29,7 +29,9 @@ def check_args(argv):
     elif arg[0] not in classes:
         print("** class doesn't exist **")
     else:
-         return arg
+        return arg
+
+
 classes = [
         "BaseModel",
         "User",
@@ -40,15 +42,16 @@ classes = [
         "Review",
 ]
 
+
 class HBNBCommand(cmd.Cmd):
     """ Implements the hbnb command interpreter
     Attributes:
         prompt: The command prompt
     """
 
-    prompt = "(hbnb) "
-  
-    cmd_list = ["create", "show", "update", "all", "destroy", "count"]
+prompt = "(hbnb) "
+
+cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
     def precmd(self, args):
         """Parse the user input"""
@@ -59,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
             if clss[0] in classes and cmmd[0] in self.cmd_list:
                 args = cmmd[0] + " " + clss[0] + " " + argl[0]
         return args
- 
+
     def emptyline(self):
         """do nothing when an empty line is passed"""
         pass
@@ -80,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
                 print("Usage: create <classname>")
 
     def do_show(self, argv):
-        """Prints the string rep of an instance based on the class name and id"""
+        """Print string rep of an instance based on classname and id"""
         name = check_args(argv)
         if name:
             if len(name) != 2:
@@ -88,16 +91,15 @@ class HBNBCommand(cmd.Cmd):
             else:
                 objs = storage.all()
                 for _, val in objs.items():
-                    object_name = val.__class__.__name__
-                    object_id = val.id
-                    if object_name == name[0] and object_id == name[1].strip('"'):
+                    obj_name = val.__class__.__name__
+                    obj_id = val.id
+                    if obj_name == name[0] and obj_id == name[1].strip('"'):
                         print(val)
                         return
-                print("** no instance found **")
-            
+                print("** no instance found **")         
 
     def do_all(self, argv):
-        """Prints all string rep of all instances based or not on the class name"""
+        """Prints all string rep of all instances based on the classname"""
         objs = storage.all()
         inst = []
         if not argv:

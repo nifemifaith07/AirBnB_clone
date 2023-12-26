@@ -143,6 +143,7 @@ class HBNBCommand(cmd.Cmd):
         (save the change into the JSON file)
         """
         name = check_args(argv)
+        name = name.strip(",")
         if name:
             print(name)
             if len(name) < 2:

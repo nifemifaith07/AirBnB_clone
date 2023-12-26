@@ -44,10 +44,7 @@ classes = [
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Implements the hbnb command interpreter
-    Attributes:
-        prompt: The command prompt
-    """
+    """Implements the hbnb command interpreter"""
 
     prompt = "(hbnb) "
 
@@ -73,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, cls_name):
-        """Creates a new instance of BaseModel, saves it and prints the id"""
+        """Creates a new instance, saves it & prints the id"""
         name = check_args(cls_name)
         if name:
             if len(name) == 1:
@@ -83,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
                 print("Usage: create <classname>")
 
     def do_show(self, argv):
-        """Print string rep of an instance based on classname and id"""
+        """Print string rep of an instance based on classname & id"""
         name = check_args(argv)
         if name:
             if len(name) != 2:
@@ -99,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, argv):
-        """Prints all string rep of all instances based on the classname"""
+        """Prints all string rep of all instances based on classname"""
         objs = storage.all()
         inst = []
         if not argv:
@@ -119,10 +116,7 @@ class HBNBCommand(cmd.Cmd):
         print(inst)
 
     def do_destroy(self, argv):
-        """
-        deletes an instance based on the classname and id
-        and save the change into the JSON file
-        """
+        """deletes an instance based on the classname and id"""
         arg = check_args(argv)
         if arg:
             if len(arg) != 2:
@@ -153,10 +147,7 @@ class HBNBCommand(cmd.Cmd):
         return val
 
     def do_update(self, argv):
-        """
-        Update instance based on classname & id by adding/updating attribute
-        (save the change into the JSON file)
-        """
+        """Update instance based on class name and id"""
         if not argv:
             print("** class name missing **")
             return

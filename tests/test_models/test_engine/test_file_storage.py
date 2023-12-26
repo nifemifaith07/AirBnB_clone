@@ -51,7 +51,7 @@ class TestFileStorage(unittest.TestCase):
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             rat = FileStorage(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-        msg = "object() takes no parameters"
+        msg = "FileStorage() takes no arguments"
         self.assertEqual(str(e.exception), msg)
 
     def test_class_attributes(self):

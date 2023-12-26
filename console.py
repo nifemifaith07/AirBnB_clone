@@ -142,30 +142,37 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on the class name and id by adding or updating attribute 
         (save the change into the JSON file)
         """
-        name = check_args(argv)
-        name = name.strip(",")
-        if name:
-            print(name)
-            if len(name) < 2:
-                print("** instance id missing **")
-            else:
-                if len(name) == 2:
-                    print("** attribute name missing **")
-                elif len(name) == 3:
-                    print("** value missing **")
-                else:
-                    obj = storage.all()
-                    for key, val in obj.items():
-                        obj_name = val.__class__.__name__
-                        obj_id = val.id
-                        if obj_name == name[0] and obj_id == name[1].strip('"'):
-                            print(val)
-                            print(name[2])
-                            print(name[3])
-                            setattr(val, name[2], name[3])
-                            storage.save()
-                            return
-                    print("** no instance found **")
+        if not argv:
+            print("** class name missing **")
+            return
+        arg = ""
+        for elm in argv.split(","):
+            arg = arg + elm
+        print(arg)
+        name = split(arg)
+        print(name)
+        if name[0] not in classes:
+            print("** class doesn't exist **")
+        elif len(name) < 2:
+            print("** instance id missing **")
+        else:
+            obj = storage.all()
+            for key, val in obj.items():
+                obj_name = val.__class__.__name__
+                obj_id = val.id
+                if obj_name == name[0] and obj_id == name[1].strip('"'):
+                    if len(name) == 2:
+                        print("** attribute name missing **")
+                    elif len(name) == 3:
+                        print("** value missing **")
+                    else:
+                        print(val)
+                        print(name[2])
+                        print(name[3])
+                        setattr(val, name[2], name[3])
+                    storage.save()
+                    return
+            print("** no instance found **")
 
     def do_count(self, class_name):
         """Count the instance of a class name from file objects"""

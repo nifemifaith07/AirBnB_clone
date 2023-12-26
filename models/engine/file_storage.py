@@ -11,7 +11,7 @@ from models.review import Review
 
 
 class FileStorage:
-    """Serializes instances to JSON file and deserializes JSON file to instances:
+    """Serialize instances to JSON file & deserialize JSON file to instances:
     Attributes:
         __file_path (str): The name of the file to save objects to.
         __objects (dict): A dictionary of instantiated objects.
@@ -25,7 +25,7 @@ class FileStorage:
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        clsName= obj.__class__.__name__
+        clsName = obj.__class__.__name__
         FileStorage.__objects["{}.{}".format(clsName, obj.id)] = obj
 
     def save(self):

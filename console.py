@@ -16,6 +16,7 @@ from models.place import Place
 from models.review import Review
 from models import storage
 
+
 def check_args(argv):
     """check if argument is valid
     Args:
@@ -143,6 +144,7 @@ class HBNBCommand(cmd.Cmd):
         """
         name = check_args(argv)
         if name:
+            print(name)
             if len(name) < 2:
                 print("** instance id missing **")
             else:
@@ -157,8 +159,8 @@ class HBNBCommand(cmd.Cmd):
                         obj_id = val.id
                         if obj_name == name[0] and obj_id == name[1].strip('"'):
                             setattr(val, name[2], name[3])
-                            storage.save()
-                            return
+                        storage.save()
+                        return
                     print("** no instance found **")
 
     def do_count(self, class_name):

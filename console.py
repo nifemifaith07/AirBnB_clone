@@ -50,11 +50,11 @@ class HBNBCommand(cmd.Cmd):
     """
 
 
-prompt = "(hbnb) "
+    prompt = "(hbnb) "
 
-cmd_list = ["create", "show", "update", "all", "destroy", "count"]
+    cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
-    def precmd(self, args):
+     def precmd(self, args):
         """Parse the user input"""
         if "." in args and "(" in args and ")" in args:
             clss = args.split(".")

@@ -137,6 +137,19 @@ class HBNBCommand(cmd.Cmd):
                         return
                 print("** no instance found **")
 
+    def convert_val(self, val):
+        """try to convert val to int/float and return it"""
+        val = val.strip('"')
+        try:
+            val = int(val)
+        except ValueError:
+            pass
+        try:
+            val = float(val)
+        except ValueError:
+            pass
+        return val
+
     def do_update(self, argv):
         """
         Updates an instance based on the class name and id by adding or updating attribute 
@@ -166,14 +179,20 @@ class HBNBCommand(cmd.Cmd):
                     elif len(name) == 3:
                         print("** value missing **")
                     else:
-                        print(val)
-                        print(name[2])
-                        print(name[3])
-                        setattr(val, name[2], name[3])
-                    storage.save()
+                        if name[2].startswith('{'):
+                            tmp = name[2:]
+                            args = []
+                            for a in range(len(tmp)):
+                                stp = tmp[a].strip("{").strip(":").strip("}")
+                                args.append(self.convert_val(stp))
+                            for i in range(0, len(args), 2):
+                                setattr(val, stp[i], stp[i + 1])
+                        else:
+                            setattr(val, name[2], name[3])
+                        storage.save()
                     return
             print("** no instance found **")
-
+            
     def do_count(self, class_name):
         """Count the instance of a class name from file objects"""
         count = 0

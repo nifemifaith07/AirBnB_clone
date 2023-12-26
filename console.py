@@ -181,10 +181,12 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         if name[2].startswith('{'):
                             tmp = name[2:]
+                            print(tmp)
                             args = []
                             for a in range(len(tmp)):
                                 stp = tmp[a].strip("{").strip(":").strip("}")
                                 args.append(self.convert_val(stp))
+                            print(args)
                             for i in range(0, len(args), 2):
                                 setattr(val, stp[i], stp[i + 1])
                         else:

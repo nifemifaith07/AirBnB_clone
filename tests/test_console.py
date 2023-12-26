@@ -70,14 +70,15 @@ class TestConsoleCommands(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as mock_stdout:
             console.HBNBCommand().onecmd("help show")
             output = mock_stdout.getvalue().strip()
-            self.assertEqual("Show instance that been passed", output)
+            self.assertEqual("Print string rep of an instance 
+                            based on classname and id", output)
 
     def test_create_command(self):
         """Test the create command"""
         with patch("sys.stdout", new=StringIO()) as mock_stdout:
             console.HBNBCommand().onecmd("help create")
             output = mock_stdout.getvalue().strip()
-            self.assertEqual("Creates an instance", output)
+            self.assertEqual("Creates a new instance of BaseModel, saves it and prints the id", output)
 
     def test_update_command(self):
         """Test the update command"""

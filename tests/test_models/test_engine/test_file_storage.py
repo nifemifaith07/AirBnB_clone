@@ -177,7 +177,7 @@ class TestStorageMethods(unittest.TestCase):
         with open("file.json", "r") as f:
             save_text = f.read()
             self.assertIn("BaseModel." + dummy_bm.id, save_text)
-            """self.assertIn("User." + dummy_user.id, save_text)
+            self.assertIn("User." + dummy_user.id, save_text)
             self.assertIn("State." + dummy_state.id, save_text)
             self.assertIn("Place." + dummy_place.id, save_text)
             self.assertIn("City." + dummy_city.id, save_text)

@@ -2,17 +2,17 @@
 """Test Suite for FileStorage in models/file_storage.py"""
 import os.path
 import unittest
-
 import models
 from models import base_model
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
-"""from models.user import User
+from models.user import User
 from models.state import State
 from models.amenity import Amenity
 from models.city import City
 from models.review import Review
-from models.place import Place"""
+from models.place import Place
+
 
 class TestFileStorage(unittest.TestCase):
     """tests for the FileStorage class
@@ -33,7 +33,6 @@ class TestFileStorage(unittest.TestCase):
         """tear it down"""
         self.resetStorage()
         pass
-    """========================"""
 
     def test_instantiation(self):
         """make an instance of storage class"""
@@ -127,12 +126,12 @@ class TestStorageMethods(unittest.TestCase):
     def test_new_method(self):
         """Tests the new() method of the FileStorage class"""
         dummy_bm = BaseModel()
-        """dummy_user = User()
+        dummy_user = User()
         dummy_state = State()
         dummy_city = City()
         dummy_place = Place()
         dummy_review = Review()
-        dummy_amenity = Amenity()"""
+        dummy_amenity = Amenity()
 
         # Checks that the objects created above are stored already
         self.assertIn("BaseModel." + dummy_bm.id,
@@ -140,8 +139,8 @@ class TestStorageMethods(unittest.TestCase):
         self.assertIn(dummy_bm, models.storage.all().values())
         self.assertIn("User." + dummy_user.id, models.storage.all().keys())
         self.assertIn(dummy_user, models.storage.all().values())
-       """self.assertIn("State." + dummy_state.id, models.storage.all().keys())
-       self.assertIn(dummy_state, models.storage.all().values())
+        self.assertIn("State." + dummy_state.id, models.storage.all().keys())
+        self.assertIn(dummy_state, models.storage.all().values())
         self.assertIn("Place." + dummy_place.id, models.storage.all().keys())
         self.assertIn(dummy_place, models.storage.all().values())
         self.assertIn("City." + dummy_city.id, models.storage.all().keys())
@@ -152,7 +151,6 @@ class TestStorageMethods(unittest.TestCase):
         self.assertIn("Review." + dummy_review.id,
                       models.storage.all().keys())
         self.assertIn(dummy_review, models.storage.all().values())
-        """
         # What if more than one arg were passed to this guy?
         # TypeError, we need you here!
         with self.assertRaises(TypeError):
@@ -167,12 +165,12 @@ class TestStorageMethods(unittest.TestCase):
     def test_save_method(self):
         """Time to deal with reload() method in FileStorage class"""
         dummy_bm = BaseModel()
-        """dummy_user = User()
+        dummy_user = User()
         dummy_state = State()
         dummy_city = City()
         dummy_place = Place()
         dummy_review = Review()
-        dummy_amenity = Amenity()"""
+        dummy_amenity = Amenity()
 
         models.storage.save()
 
@@ -184,34 +182,33 @@ class TestStorageMethods(unittest.TestCase):
             self.assertIn("Place." + dummy_place.id, save_text)
             self.assertIn("City." + dummy_city.id, save_text)
             self.assertIn("Amenity." + dummy_amenity.id, save_text)
-            self.assertIn("Review." + dummy_review.id, save_text)"""
+            self.assertIn("Review." + dummy_review.id, save_text)
 
         # What happens when an arg is passed? TypeError has been my agent!
         with self.assertRaises(TypeError):
             models.storage.save(None)
 
     def test_reload_method(self):
-        """Tests the reload method... Quite tricky!"""
+        Tests the reload method... Quite tricky!
         dummy_bm = BaseModel()
-       """ dummy_user = User()
+        dummy_user = User()
         dummy_state = State()
         dummy_city = City()
         dummy_place = Place()
         dummy_review = Review()
-        dummy_amenity = Amenity()"""
+        dummy_amenity = Amenity()
 
         models.storage.save()
         models.storage.reload()
         objects = FileStorage._FileStorage__objects
 
         self.assertIn("BaseModel." + dummy_bm.id, objects)
-       """ self.assertIn("User." + dummy_user.id, objects)
+        self.assertIn("User." + dummy_user.id, objects)
         self.assertIn("State." + dummy_state.id, objects)
         self.assertIn("Place." + dummy_place.id, objects)
         self.assertIn("City." + dummy_city.id, objects)
         self.assertIn("Amenity." + dummy_amenity.id, objects)
         self.assertIn("Review." + dummy_review.id, objects)
-        """
         # What happens when an arg is passed? TypeError is raised
         with self.assertRaises(TypeError):
             models.storage.reload(None)

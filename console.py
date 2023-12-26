@@ -188,7 +188,7 @@ class HBNBCommand(cmd.Cmd):
                                 args.append(self.convert_val(stp))
                             print(args)
                             for i in range(0, len(args), 2):
-                                setattr(val, stp[i], stp[i + 1])
+                                setattr(val, args[i], args[i + 1])
                         else:
                             setattr(val, name[2], name[3])
                         storage.save()

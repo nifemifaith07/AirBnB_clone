@@ -4,15 +4,16 @@ from uuid import uuid4
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """defines all common attributes/methods for other classes"""
-    
+
     def __init__(self, *args, **kwargs):
         """initializes the BaseModel class
         Attributes:
-            id (optional, str): unique id for each BaseModel
-            created_at (optional, datetime): the datetime when an instance is created
-            updated_at (optional, datetime): the datetime when an instance is modified
+            id(optional, str): unique id for each BaseModel
+            created_at(optional, datetime): when an instance is created
+            updated_at(optional, datetime):when an instan ce is modified
         """
         t_format = "%Y-%m-%dT%H:%M:%S.%f"
         if not kwargs:
@@ -37,10 +38,11 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """returns a dict containing all keys/values of __dict__ of the instance
-        - only instance attributes set will be returned
-        - a key __class__ is added to this dictionary with the class name of the object
-        - created_at and updated_at must be converted to string object in ISO format
+        """
+        returns a dict containing all keys/values of __dict__ of the instance
+        only instance attributes set will be returned
+        key __class__ is added to this dict with the classname of the obj
+        created_at & updated_at must be converted to string obj(ISO format)
         """
         r_dict = self.__dict__.copy()
         r_dict["__class__"] = self.__class__.__name__

@@ -4,8 +4,7 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Represent an amenity 
-
+    """Represent an amenity
     Attributes:
         name (str): empty string
     """

@@ -49,6 +49,7 @@ class HBNBCommand(cmd.Cmd):
         prompt: The command prompt
     """
 
+
 prompt = "(hbnb) "
 
 cmd_list = ["create", "show", "update", "all", "destroy", "count"]
@@ -96,7 +97,7 @@ cmd_list = ["create", "show", "update", "all", "destroy", "count"]
                     if obj_name == name[0] and obj_id == name[1].strip('"'):
                         print(val)
                         return
-                print("** no instance found **")         
+                print("** no instance found **")
 
     def do_all(self, argv):
         """Prints all string rep of all instances based on the classname"""
@@ -154,7 +155,7 @@ cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
     def do_update(self, argv):
         """
-        Updates an instance based on the class name and id by adding or updating attribute 
+        Update instance based on classname & id by adding/updating attribute
         (save the change into the JSON file)
         """
         if not argv:
@@ -196,7 +197,7 @@ cmd_list = ["create", "show", "update", "all", "destroy", "count"]
                         storage.save()
                     return
             print("** no instance found **")
-            
+
     def do_count(self, class_name):
         """Count the instance of a class name from file objects"""
         count = 0

@@ -49,12 +49,11 @@ class HBNBCommand(cmd.Cmd):
         prompt: The command prompt
     """
 
-
     prompt = "(hbnb) "
 
     cmd_list = ["create", "show", "update", "all", "destroy", "count"]
 
-     def precmd(self, args):
+    def precmd(self, args):
         """Parse the user input"""
         if "." in args and "(" in args and ")" in args:
             clss = args.split(".")
@@ -207,6 +206,7 @@ class HBNBCommand(cmd.Cmd):
             if clss[0] == class_name:
                 count = count + 1
         print(count)
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

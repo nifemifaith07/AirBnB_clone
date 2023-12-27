@@ -482,6 +482,7 @@ class TestCommand(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd('{}.show("{}")'.format(classname, uid))
         s = f.getvalue()
+        print(s)
         self.assertIn(attr, s)
         self.assertIn(val, s)
 

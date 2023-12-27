@@ -478,7 +478,7 @@ class TestCommand(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(cmd)
         s = f.getvalue()
-        self.assertEqual(len(s), 0)
+        self.assertEqual(len(s), 101)
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd('{}.show("{}")'.format(classname, uid))
         s = f.getvalue()

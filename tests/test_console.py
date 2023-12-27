@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """module to test the console/ TestCommand"""
-
+import models
 from console import HBNBCommand
 from models.engine.file_storage import FileStorage
 from models import storage

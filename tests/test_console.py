@@ -4,6 +4,13 @@
 from console import HBNBCommand
 from models.engine.file_storage import FileStorage
 from models import storage
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 import unittest
 import datetime
 from unittest.mock import patch

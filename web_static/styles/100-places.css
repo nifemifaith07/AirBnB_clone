@@ -13,7 +13,7 @@
 	border: 1px solid #ff5a5f;
 	border-radius: 4px;
 	display: inline-grid;
-	height: auto;
+	min-height: 600px;
 }
 .places h2,
 .Places h3,
@@ -36,8 +36,7 @@
 	margin-bottom: 10px;
 }
 
-.places article h2 {
-	font-weight: bold;
+.places article .name_price h2 {
 	margin-right: auto;
 	margin-left: 120px;
 }
@@ -95,27 +94,28 @@
 	font-weight: bold;
 }
 
-.amenities, div.amenities h2,
-.reviews, div.reviews h2
-.places .amenities ul,
-.places .reviews ul {
-	display: block;
-	list-style: none;
-}
-
 .places .amenities,
 .places .reviews {
-	display: flex;
-	flex-direction: column;
 	margin-top: 40px;
-	height: 60px;
 	width: 100%;
-	line-height: 3em;
+	text-align: left;
 }
 
 .places .amenities h2,
 .places .reviews h2 {
 	border-bottom: 1px solid #dddd;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+article div.amenities ul,
+article div.reviews ul {
+	display: block;
+}
+
+article div.amenities ul li,
+article div.reviews ul li {
+	list-style: none;
 }
 
 .places .amenities .Tv {
@@ -131,7 +131,26 @@
 .amenities .Tv,
 .amenities .PT,
 .amenities .Wifi {
-	width: 40px;
+	height: 25px;
+	width: 25px;
 	background-position: left;
 	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.reviews ul li h3 {
+	font-size: 14px;
+	padding: 5px 0px 1px 0px;
+}
+
+.amenities ul li p,
+.reviews ul li p {
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+
+.amenities ul li p {
+	width: 100px;
+	margin-left: 40px;
+	padding-top: 8px;
 }
